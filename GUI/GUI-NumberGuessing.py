@@ -1,26 +1,32 @@
+# NUMBER GUESSING GAME IN PY USING TKINTER
+
+#modules
 from tkinter import *
 from random import randint 
 
+#random number 
 global m
 m = randint(1, 9) * 100 + randint(0, 9) * 10 + randint(0, 9)
 global Trailno
 Trailno =0
 
-
+# GUI
 root = Tk()
 root.title("NUMBER GUESSING GAME")
 root.geometry('320x330')
-#root.iconbitmap(root,"Numberguess.ico")
+
+#Game Title and discription
 Title = Label(root,text="Guessing The Number",font=('forte',22),padx=30,pady=10,fg = 'blue')
 Title.grid(row=0,column=0)
 
 Discription = Label(root,text="( Guess from 100 to 999 )",font=('forte',12),padx=50,fg='#ff00ff')
 Discription.grid(row=1,column=0)
-#Main Operator
 
+#Main Operator
 def AllOper():
     global Trailno
     global inputed
+    #Total Trials to player is 15
     if ( Trailno >= 0 and Trailno <15 ) :
         try :
             answered = int(inputed.get())
@@ -51,25 +57,26 @@ def AllOper():
         Check.config(state=DISABLED)
 
 
-
+# Trails Shower
 global Trails
 Trails = Label(root,text="Trails : " + str(Trailno) + " Out of 15",anchor='e')
 Trails.grid(row=2,column=0,pady=15)
-
+# Input Tab
 global inputed
 inputed = Entry(root,borderwidth=5)
 inputed.grid(row=3,column =0)
-
+# Check Button
 global Check
 Check = Button(root,text="Check",command=AllOper,bg = 'aqua')
 Check.grid(row=5,column =0,pady=10,padx=20)
-
+# Results Tab
 global Indicator
 Indicator = Label(root,text = "Start the game")
 Indicator.grid(row=7,column=0)
-
+# Hint Tab
 global Hint
 Hint = Label(root,text= "Hint : Avaliable from Trail 3 ",fg='#4e4e4e')
 Hint.grid(row = 8,column=0)
 
+#Main loop for GUI
 mainloop()
