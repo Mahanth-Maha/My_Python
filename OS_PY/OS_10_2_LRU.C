@@ -2,18 +2,18 @@
 main()
 {
     int i, j, k, f, max, p = 10, pf = 0, count[10], pageref[25], fp[10], n, flag[10];
-    printf("\n Enter the length of page reference string -- ");
+    printf("\n Enter the length of page reference string :");
     scanf("%d", &n);
-    printf("\n Enter the reference string -- ");
+    printf("\n Enter the reference string :");
     for (i = 0; i < n; i++)
         scanf("%d", &pageref[i]);
-    printf("\n Enter no. of frames -- ");
+    printf("\n Enter no. of frames :");
     scanf("%d", &f);
     for (i = 0; i < f; i++)
     {
         fp[i] = -1;
         count[i] = 0;
-        flag[i] = 0;
+        //flag[i] = 0;
     }
     printf("\n The Page Replacement Process is -- \n");
     for (i = 0; i < n; i++)
@@ -26,14 +26,14 @@ main()
                 pf++;
                 count[k] = 1;
                 p = k;
-                flag[k] = 1;
+                //flag[k] = 1;
                 break;
             }
             else if (fp[k] == pageref[i]) //required page found
             {
                 count[k] = 1;
                 p = k;
-                flag[k] = 1;
+                //flag[k] = 1;
                 break;
             }
         }
@@ -50,7 +50,7 @@ main()
             }
             fp[p] = pageref[i];
             count[p] = 1;
-            flag[p] = 1;
+            //flag[p] = 1;
             pf++;
         }
         printf("Page ref is %d Fault %d", pageref[i], pf);

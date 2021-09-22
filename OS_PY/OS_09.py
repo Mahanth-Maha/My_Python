@@ -38,7 +38,6 @@ def bestFit(blockSize, m, processSize, n):
         c = processSize[i]
         temp.append(c)
         temp.sort()
-        print(temp)
         if temp.index(c) != len(temp):
             if temp[0] == c:
                 if temp[1] == c :

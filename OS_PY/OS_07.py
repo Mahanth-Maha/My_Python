@@ -44,12 +44,11 @@ def main():
     forks = [threading.Semaphore() for n in range(5)]  # initialising array of semaphore i.e forks
 
     # here (i+1)%5 is used to get right and left forks circularly between 1-5
-    philosophers = [Philosopher(i, forks[i % 5], forks[(i + 1) % 5])
-                    for i in range(5)]
+    philosophers = [Philosopher(i, forks[i % 5], forks[(i + 1) % 5]) for i in range(5)]
 
     Philosopher.running = True
     for p in philosophers: p.start()
-    time.sleep(50)
+    time.sleep(150)
     Philosopher.running = False
     print("Now we're finishing.")
 

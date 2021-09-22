@@ -3,16 +3,16 @@
 main()
 {
     int i, j, k, f, pf = 0, count = 0, pageref[25], fp[10], n;
-    printf("\n Enter the length of page reference string -- ");
+    printf("\n Enter the length of page reference string : ");
     scanf("%d", &n);
-    printf("\n Enter the reference string -- ");
+    printf("\n Enter the reference string : ");
     for (i = 0; i < n; i++)
         scanf("%d", &pageref[i]);
-    printf("\n Enter no. of frames -- ");
+    printf("\n Enter no. of frames : ");
     scanf("%d", &f);
     for (i = 0; i < f; i++)
         fp[i] = -1;
-    printf("\n The Page Replacement Process is -- \n");
+    printf("\n The Page Replacement Process is  \n");
     for (i = 0; i < n; i++)
     {
         for (k = 0; k < f; k++)
