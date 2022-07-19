@@ -1,43 +1,46 @@
-from SingleLinkedListADT import singleLinkedList,SLLNode
+from SingleLinkedListADT import singleLinkedList, SLLNode
 
-class StackSLL(singleLinkedList) :
+
+class StackSLL(singleLinkedList):
     def __init__(self) -> None:
         super().__init__()
-    
-    ''' Implementation Using LIFO '''
 
-    def push(self,sdata):
+    ''' Implementation Using LIFO # I mean from first '''
+
+    def push(self, sdata):
         self.insert_at_first(sdata)
-    
+
     def pop(self):
         ret = self.delete_at_first()
-        if ret == None :
+        if ret == None:
             return -1
         return ret
 
-    ''' Implementation Using FILO 
+    ''' Implementation Using FILO # I mean the other way from last onlr worst case impl
     def push(self,sdata):
-        self.insert_at_first(sdata)
+        self.insert_at_last(sdata)
     
     def pop(self):
         return self.delete_at_last()
     '''
 
+
 class SLL_Stack:
     def __init__(self) -> None:
         self.head = None
-    
-    def push(self,ndata) -> None:
-        self.head = SLLNode(ndata,self.head)
-    
+
+    def push(self, ndata) -> None:
+        self.head = SLLNode(ndata, self.head)
+
     def pop(self) -> int:
-        if self.head == None : return -1
+        if self.head == None:
+            return -1
         r = self.head
         d = self.head.data
         self.head = self.head.link
-        del r 
+        del r
         return d
-    
+
     def __str__(self) -> str:
         if self.head == None:
             return str("-No Nodes-")
@@ -48,6 +51,7 @@ class SLL_Stack:
             s += '->' + str(t.data)
             t = t.link
         return s
+
 
 def main():
     s = StackSLL()
@@ -71,5 +75,7 @@ def main():
     print(s.pop())
     print(s.pop())
     print(s.pop())
-if __name__=='__main__':
+
+
+if __name__ == '__main__':
     main()

@@ -37,7 +37,7 @@ class singleLinkedList:
     def delete_node(self, index_at: int = 0):
         if self.head == None:
             return None
-        if index_at == 0:
+        if index_at == 0 or index_at == 1:
             temp = self.head
             self.head = self.head.link
             sdata = temp.data
@@ -109,14 +109,12 @@ def main():
     root.insert_at_first(5)
     root.insert_after_index(30, 5)
     print(root)
-    print("Deleted:",root.delete_node(0))
+    print("Deleted:", root.delete_node(0))
     print(root)
-    print("Deleted:",root.delete_node(3))
+    print("Deleted:", root.delete_node(1))
     print(root)
-    print("Deleted:",root.delete_node(len(root)))
+    print("Deleted:", root.delete_node(len(root)))
     print(root)
-
-
 
 
 if __name__ == '__main__':
