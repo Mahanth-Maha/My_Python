@@ -339,11 +339,13 @@ def main_BS():
 def main():
     AVL = AVLTree()
     ins = [21,26,30,9,4,14,28,18,15,10,2,3,7]
-    for i in ins:
+    ins2 = [50,20,60,10,8,15,32,46,11,48]
+    for i in ins2:
+        print(f'\n{i=}\n')
         AVL.insert(i)
+        AVL.traverse_preorder()
         AVL.traverse_inorder()
-    ''' I Don't know why how what i did... but, why it worked for the first time that too AVL !!!!!!!!!
-    i mean it a redudant code still ! it shouldn't right xD '''
+        AVL.traverse_postorder()
 
 
 if __name__ == '__main__':
