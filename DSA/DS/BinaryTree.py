@@ -7,7 +7,6 @@ class TreeNode:
         self.d = d
         self.lc = L
 
-
 class BinarySearchTree:
     def __init__(self) -> None:
         self.root = None
@@ -240,21 +239,21 @@ class AVLTree(BinarySearchTree):
         elif n2.lc == n3:
             rot += 'L'
         if rot[0] == rot[1] and rot[0] == 'R':
-            #balance RR
+            # balance RR
             if rt == False:
                 parent, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             else:
                 self.root, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             return
         elif rot[0] == rot[1] and rot[0] == 'L':
-            #balance LL
+            # balance LL
             if rt == False:
                 parent, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             else:
                 self.root, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             return
         elif rot[0] == 'L' and rot[1] == 'R':
-            #balance LR
+            # balance LR
             n1, n2, n3 = self.__LR(n1, n2, n3)
             if rt == False:
                 parent, n1, n2 = self.__LL(parent, n1, n2, parent_side)
@@ -262,7 +261,7 @@ class AVLTree(BinarySearchTree):
                 self.root, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             return
         elif rot[0] == 'R' and rot[1] == 'L':
-            #balance RL
+            # balance RL
             n1, n2, n3 = self.__RL(n1, n2, n3)
             if rt == False:
                 parent, n1, n2 = self.__RR(parent, n1, n2, parent_side)
@@ -309,6 +308,14 @@ class AVLTree(BinarySearchTree):
         n2.lc = n3.rc
         n3.rc = n2
         return n1, n3, n2
+
+class K_aryTreeNode:
+    def __init__(self, d=0 ,k = 2,pointers = None) -> None:
+        self.d = d
+        self.k = k
+        self.pointers = [ None for _ in self.k ]
+        for i in range(len(pointers)):
+            self.pointers[i] = pointers[i]
 
 
 def main_BS():
