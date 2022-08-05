@@ -1,5 +1,5 @@
 class DLLNode:
-    def __init__(self,data=None, next=None, prev = None):
+    def __init__(self, data=None, next=None, prev=None):
         self.data = data
         self.next = next
         self.prev = prev
@@ -15,6 +15,7 @@ class DLLNode:
         return s
     '''
 
+
 class doubleLinkedList:
     def __init__(self) -> None:
         self.head = None
@@ -23,8 +24,8 @@ class doubleLinkedList:
         if self.head == None:
             self.head = DLLNode(newData)
             return self
-        if index_at == 0: 
-            self.head.prev = DLLNode(newData,self.head)
+        if index_at == 0:
+            self.head.prev = DLLNode(newData, self.head)
             self.head = self.head.prev
             return self
         t = self.head
@@ -108,7 +109,7 @@ class doubleLinkedList:
             c += 1
             t = t.next
         return c
-    
+
     def rev_str(self) -> str:
         if self.head == None:
             return str("-No Nodes-")
@@ -120,12 +121,13 @@ class doubleLinkedList:
             t = t.next
         s += '->' + str(t.data)
         s += '\nBackward :'
-        s += '<-' + str(t.data) 
+        s += '<-' + str(t.data)
         t = t.prev
         while(t != None):
             s += '<-' + str(t.data)
             t = t.prev
         return s
+
 
 def main():
     root = doubleLinkedList()
@@ -166,6 +168,7 @@ def main():
     print(root.rev_str())
     print("Deleted:", root.delete_at_last())
     print(root.rev_str())
+
 
 if __name__ == '__main__':
     main()

@@ -1,25 +1,25 @@
 class StackADT:
-    def __init__(self,size=10) -> None:
+    def __init__(self, size=10) -> None:
         self.MAX = size
         self.stack = []
         self.top = 0
 
-    def mpush(self,data):
-        if self.top != self.MAX :
+    def mpush(self, data):
+        if self.top != self.MAX:
             self.stack.append(data)
-            self.top +=1
+            self.top += 1
             return self.stack
         return -1
-    
+
     def mpop(self):
         if self.top == 0:
             return -1
-        self.top -=1
+        self.top -= 1
         return self.stack.pop()
-    
+
     def __len__(self):
         return self.top
-    
+
     def __str__(self) -> str:
         s = 'Z |\t'
         for i in self.stack:
@@ -49,7 +49,6 @@ def main():
     print(f'{S.mpop()=}')
     print(f'{S.mpop()=}')
     print(f'{S.mpop()=}')
-    
 
 
 if __name__ == '__main__':

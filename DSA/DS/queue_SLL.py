@@ -21,7 +21,7 @@ class QueueSLL(singleLinkedList):
         self.insert_at_first(sdata)
     
     def dequeue(self):
-        return self.delete_at_last()
+        returnF self.delete_at_last()
     '''
 
 

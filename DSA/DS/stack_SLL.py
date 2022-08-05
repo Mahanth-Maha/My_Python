@@ -55,6 +55,7 @@ class SLL_Stack:
 
 def main():
     s = StackSLL()
+    print("Stack SLL using Single linked list\n")
     s.push(20)
     s.push(30)
     s.push(40)
@@ -66,6 +67,7 @@ def main():
     print(s.pop())
 
     s = SLL_Stack()
+    print("Stack SLL using Single linked list Type 2\n")
     s.push(20)
     s.push(30)
     s.push(40)

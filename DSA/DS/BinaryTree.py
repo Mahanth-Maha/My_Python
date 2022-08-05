@@ -7,6 +7,7 @@ class TreeNode:
         self.d = d
         self.lc = L
 
+
 class BinarySearchTree:
     def __init__(self) -> None:
         self.root = None
@@ -309,11 +310,12 @@ class AVLTree(BinarySearchTree):
         n3.rc = n2
         return n1, n3, n2
 
+
 class K_aryTreeNode:
-    def __init__(self, d=0 ,k = 2,pointers = None) -> None:
+    def __init__(self, d=0, k=2, pointers=None) -> None:
         self.d = d
         self.k = k
-        self.pointers = [ None for _ in self.k ]
+        self.pointers = [None for _ in self.k]
         for i in range(len(pointers)):
             self.pointers[i] = pointers[i]
 

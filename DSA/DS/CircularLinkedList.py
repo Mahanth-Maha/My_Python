@@ -31,7 +31,7 @@ class CircularLinkedList:
             temp = CLLNode(newData, self.head)
             t = self.head
             while(t.link != self.head):
-                 t = t.link
+                t = t.link
             self.head = temp
             t.link = temp
             return self

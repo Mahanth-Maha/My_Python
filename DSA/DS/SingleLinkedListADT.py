@@ -101,6 +101,7 @@ class singleLinkedList:
 
 def main():
     root = singleLinkedList()
+    print("SLL\n")
     root.insert_at_first(10)
     root.insert_at_last(20)
     root.insert_after_index(15, 1)

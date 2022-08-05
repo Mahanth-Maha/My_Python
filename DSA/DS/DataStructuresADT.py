@@ -7,11 +7,11 @@ from CircularLinkedList import CircularLinkedList
 
 # 0.1 STACK
 from stack_ARR import StackADT
-from stack_SLL import SLL_Stack,StackSLL
+from stack_SLL import SLL_Stack, StackSLL
 
 # 0.2 QUEUE
 from queue_ARR import QueueADT
-from queue_SLL import SLL_Queue,QueueSLL
+from queue_SLL import SLL_Queue, QueueSLL
 
 # 1. Tree
 #  1.1 BinaryTree
@@ -26,10 +26,10 @@ from BinaryTree import AVLTree
 #  1.4 K_ary_Tree
 from BinaryTree import K_aryTreeNode
 
-# TODO 
+# TODO
 # 2. Graph
 #  2.1 Graph
-from Graph import GraphLinkedList,GraphMatrix
+from Graph import GraphLinkedList, GraphMatrix
 
 #  2.2 BreadthFirstSearch
 from Graph import BFS
