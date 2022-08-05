@@ -180,31 +180,32 @@ class AVLTree(BinarySearchTree):
             return 0
         if n.rc == None and n.lc == None:
             return 0
-        return self.height(n.lc) - self.height(n.lc)
+        return self.height(n.rc) - self.height(n.lc)
 
     def insert(self, data):
         if self.root == None:
             self.root = TreeNode(data)
             return
         q = self.root
-        stack = []
+        stack = [self.root]
         while q:
             if q.d < data:
                 if q.rc == None:
                     q.rc = TreeNode(data)
+                    stack.append(q.rc)
                     break
                 q = q.rc
             elif q.d > data:
                 if q.lc == None:
                     q.lc = TreeNode(data)
+                    stack.append(q.lc)
                     break
                 q = q.lc
             stack.append(q)
-            # print([i.d for i in stack])
-        if len(stack) in (0,1) :
+        if len(stack) in (0, 1):
             return
         s2 = []
-        for _ in range(1,len(stack)+1):
+        for _ in range(1, len(stack)+1):
             w = self.balanceFactor(stack[-_])
             if w in (1, 0, -1):
                 s2.append((stack[-_], w))
@@ -213,18 +214,22 @@ class AVLTree(BinarySearchTree):
                 break
         if s2[-1][1] in (1, 0, -1):
             return
-        if len(stack) == 0:
-            parent = self.root
-            rt = True
-        else:
-            parent = stack.pop()
-        if parent.rc == n1:
-            parent_side = 'L'
-        elif parent.lc == n1:
-            parent_side = 'R'
         n1 = s2[-1][0]
         n2 = s2[-2][0]
         n3 = s2[-3][0]
+        rt = False
+        if stack[0] == n1:
+            parent = self.root
+            rt = True
+        else:
+            parent = stack[-(_+1)]
+        if parent == n1:
+            parent_side = None
+        elif parent.rc == n1:
+            parent_side = 'R'
+        elif parent.lc == n1:
+            parent_side = 'L'
+
         rot = ''
         if n1.rc == n2:
             rot += 'R'
@@ -237,35 +242,40 @@ class AVLTree(BinarySearchTree):
         if rot[0] == rot[1] and rot[0] == 'R':
             #balance RR
             if rt == False:
-                parent, n1, n2 = self.__RR(parent, n1, n2,parent_side)
+                parent, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             else:
-                self.root, n1, n2 = self.__RR(parent, n1, n2,parent_side)
+                self.root, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             return
         elif rot[0] == rot[1] and rot[0] == 'L':
             #balance LL
             if rt == False:
-                parent, n1, n2 = self.__LL(parent, n1, n2,parent_side)
+                parent, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             else:
-                self.root, n1, n2 = self.__LL(parent, n1, n2,parent_side)
+                self.root, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             return
         elif rot[0] == 'L' and rot[1] == 'R':
             #balance LR
-            n1,n2,n3 = self.__LR(n1,n2,n3)
+            n1, n2, n3 = self.__LR(n1, n2, n3)
             if rt == False:
-                parent, n1, n2 = self.__RR(parent, n1, n2,parent_side)
+                parent, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             else:
-                self.root, n1, n2 = self.__RR(parent, n1, n2,parent_side)
+                self.root, n1, n2 = self.__LL(parent, n1, n2, parent_side)
             return
         elif rot[0] == 'R' and rot[1] == 'L':
             #balance RL
-            n1,n2,n3 = self.__RL(n1,n2,n3)
+            n1, n2, n3 = self.__RL(n1, n2, n3)
             if rt == False:
-                parent, n1, n2 = self.__LL(parent, n1, n2,parent_side)
+                parent, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             else:
-                self.root, n1, n2 = self.__LL(parent, n1, n2,parent_side)
+                self.root, n1, n2 = self.__RR(parent, n1, n2, parent_side)
             return
 
-    def __RR(self, parent, n1, n2,parent_side):
+    def __RR(self, parent, n1, n2, parent_side):
+        if parent_side == None:
+            self.root = n2
+            n1.rc = n2.lc
+            n2.lc = n1
+            return self.root, n1, n2
         if parent_side == 'L':
             parent.lc = n2
         else:
@@ -274,7 +284,12 @@ class AVLTree(BinarySearchTree):
         n2.lc = n1
         return parent, n1, n2
 
-    def __LL(self, parent, n1, n2,parent_side):
+    def __LL(self, parent, n1, n2, parent_side):
+        if self.root == n1:
+            self.root = n2
+            n1.lc = n2.rc
+            n2.rc = n1
+            return self.root, n1, n2
         if parent_side == 'L':
             parent.lc = n2
         else:
@@ -282,17 +297,19 @@ class AVLTree(BinarySearchTree):
         n1.lc = n2.rc
         n2.rc = n1
         return parent, n1, n2
-    
-    def __LR(self,n1,n2,n3):
+
+    def __LR(self, n1, n2, n3):
+        n2.rc = n2.rc.lc
         n1.lc = n3
-        n2.rc = n3.lc
         n3.lc = n2
-        return n1,n2,n3
-    def __RL(self,n1,n2,n3):
+        return n1, n3, n2
+
+    def __RL(self, n1, n2, n3):
         n1.rc = n3
         n2.lc = n3.rc
         n3.rc = n2
-        return n1,n2,n3
+        return n1, n3, n2
+
 
 def main_BS():
     """ Helo """
@@ -338,14 +355,21 @@ def main_BS():
 
 def main():
     AVL = AVLTree()
-    ins = [21,26,30,9,4,14,28,18,15,10,2,3,7]
-    ins2 = [50,20,60,10,8,15,32,46,11,48]
-    for i in ins2:
+    ins = [21, 26, 30, 9, 4, 14, 28, 18, 15, 10, 2, 3, 7]
+    ins2 = [50, 20, 60, 10, 8, 15, 32, 46, 11, 48]
+    for i in ins:
         print(f'\n{i=}\n')
         AVL.insert(i)
         AVL.traverse_preorder()
         AVL.traverse_inorder()
         AVL.traverse_postorder()
+    AVL = AVLTree()
+    print(f'\nNEW AVL with INPUT = {ins}\n')
+    for i in ins:
+        AVL.insert(i)
+    AVL.traverse_preorder()
+    AVL.traverse_inorder()
+    AVL.traverse_postorder()
 
 
 if __name__ == '__main__':
