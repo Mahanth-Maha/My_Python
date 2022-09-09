@@ -7,13 +7,13 @@ from DoubleLinkedListADT import doubleLinkedList
 from CircularLinkedList import CircularLinkedList
 ```
 
-### 0.1 STACK
+#### 0.1 STACK Abs DT
 ```
 from stack_ARR import StackADT
 from stack_SLL import SLL_Stack, StackSLL
 ```
 
-### 0.2 QUEUE
+#### 0.2  QUEUE Abs DT
 
 ```
 from queue_ARR import QueueADT
@@ -93,39 +93,39 @@ import heapq
 
 ALL Builtins-> THE PYTHON STANDARD LIBRARY : https://docs.python.org/3/library/
 
-    Functions -> https://docs.python.org/3/library/functions.html
+Functions -> https://docs.python.org/3/library/functions.html
 
-    Constants -> https://docs.python.org/3/library/constants.html
+Constants -> https://docs.python.org/3/library/constants.html
 
-    Binary Sequence Types -> https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview
+Binary Sequence Types -> https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview
 
-    exceptions -> https://docs.python.org/3/library/exceptions.html
+exceptions -> https://docs.python.org/3/library/exceptions.html
 
-    Text Processing -> https://docs.python.org/3/library/text.html
+Text Processing -> https://docs.python.org/3/library/text.html
 
-    Data Types -> https://docs.python.org/3/library/datatypes.html
-        --> includes datetime,zoneinfo,calendar — General calendar-related functions,collections,collections,heapq,bisect,array,weakref,types,copy,pprint,reprlib,enum,graphlib
+Data Types -> https://docs.python.org/3/library/datatypes.html
+    --> includes datetime,zoneinfo,calendar — General calendar-related functions,collections,collections,heapq,bisect,array,weakref,types,copy,pprint,reprlib,enum,graphlib
 
-    ### Numeric and Mathematical Modules
+### Numeric and Mathematical Modules
 
-        numbers -> https://docs.python.org/3/library/numbers.html
+    numbers -> https://docs.python.org/3/library/numbers.html
 
-        math ->https://docs.python.org/3/library/math.html
+    math ->https://docs.python.org/3/library/math.html
 
-        cmath ->https://docs.python.org/3/library/cmath.html
+    cmath ->https://docs.python.org/3/library/cmath.html
 
-        decimal ->https://docs.python.org/3/library/decimal.html
+    decimal ->https://docs.python.org/3/library/decimal.html
 
-        fractions ->https://docs.python.org/3/library/fractions.html
+    fractions ->https://docs.python.org/3/library/fractions.html
 
-        random ->https://docs.python.org/3/library/random.html
+    random ->https://docs.python.org/3/library/random.html
 
-        statistics ->https://docs.python.org/3/library/statistics.html
+    statistics ->https://docs.python.org/3/library/statistics.html
 
-    ### Functional Programming
+### Functional Programming
 
-        itertools -> https://docs.python.org/3/library/itertools.html
+    itertools -> https://docs.python.org/3/library/itertools.html
 
-        functools -> https://docs.python.org/3/library/functools.html
+    functools -> https://docs.python.org/3/library/functools.html
 
-        operator -> https://docs.python.org/3/library/operator.html
+    operator -> https://docs.python.org/3/library/operator.html
