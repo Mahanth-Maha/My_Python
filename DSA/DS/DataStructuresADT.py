@@ -44,10 +44,18 @@ from Graph import DFS
 #        3.1.2.1 DirectAddressTable_OpenAdressing-LinearProbing
 #        3.1.2.2 DirectAddressTable_OpenAdressing-QuadraticProbing
 #        3.1.2.3 DirectAddressTable_OpenAdressing-DoubleHashing
+class hashing(dict) :
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
 
 # 4. SET
 #  4.1 DisjointSets
+class sets(set):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
 
 # 5. Heap
 #  5.1 BinaryHeap-MinHeap
-#  5.1 BinaryHeap-MaxHeap
+#  5.2 BinaryHeap-MaxHeap
+
+import heapq
