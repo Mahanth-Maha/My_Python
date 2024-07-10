@@ -7,7 +7,7 @@ import random
 import pandas as pd
 
 
-df = pd.read_csv('sudoku_100000_for_github.csv')
+df = pd.read_csv('sudoku_500000_for_github.csv')
 pygame.init()
 
 G = 0.25
