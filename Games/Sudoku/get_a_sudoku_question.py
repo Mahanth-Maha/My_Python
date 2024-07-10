@@ -2,8 +2,8 @@ import pandas as pd
 import random
 
 df = pd.read_csv('sudoku.csv')
-df2 = df[:100000]
-df2.to_csv('sudoku_100000_for_github.csv')
+# df2 = df[:500000]
+# df2.to_csv('sudoku_500000_for_github.csv')
 
 def get_sudoku(self):
     question, solution = (df.loc[random.randint(0,df.shape[0])])
