@@ -20,13 +20,13 @@ def get_sudoku_board_from_Str( s: str):
 
 def getSudoku():
     df = pd.read_csv('sudoku_500000_for_github.csv')
-    _, question, solution = (df.loc[random.randint(0, df.shape[0])])
+    question, solution = (df.loc[random.randint(0, df.shape[0])])
     qb = get_sudoku_board_from_Str(question)
     ab = get_sudoku_board_from_Str(solution)
     return qb, ab
 
 
-def solveSudoku(board):
+def solveSudoku(board , verbose = False):
     rows = [[False for j in range(9)] for i in range(9) ]
     cols = [[False for j in range(9)] for i in range(9) ]
     boxes = [[False for j in range(9)] for i in range(9) ]
@@ -37,7 +37,7 @@ def solveSudoku(board):
                 cols[j][board[i][j] - 1] = True
                 boxes[3*(i//3) + (j//3)][board[i][j] - 1] = True
     
-    def solver(board, rows, cols, boxes):
+    def solver(board, rows, cols, boxes , verbose = False):
         for i in range(9):
             for j in range(9):
                 if board[i][j] == 0:
@@ -45,24 +45,47 @@ def solveSudoku(board):
                         if not rows[i][value - 1] and not cols[j][value - 1] and not boxes[3*(i//3) + (j//3)][value - 1] :
                             board[i][j] = value
                             rows[i][value - 1] = cols[j][value - 1] = boxes[3*(i//3) + (j//3)][value - 1] = True
-                            
-                            if solver(board , rows, cols , boxes):
+                            if verbose:
+                                print("Solving... (Forward)")
+                                printBoard(board)
+                            if solver(board , rows, cols , boxes , verbose):
                                 return True
                             else :
                                 board[i][j] = 0
                                 rows[i][value - 1] = cols[j][value - 1] = boxes[3*(i//3) + (j//3)][value - 1] = False
+                                if verbose:
+                                    print("Solving... (Backtrack)")
+                                    printBoard(board)
                     return False
         return True
     
-    solver(board, rows, cols, boxes)
+    solver(board, rows, cols, boxes , verbose)
     return board
+
+def printBoard(board):
+    for i in board:
+        for j in i:
+            if j == 0:
+                print('_', end=' ')
+            else :
+                print(j, end=' ')
+        print()
+    print()
 
 if __name__ == '__main__':
     q, a = getSudoku()
-    q = solveSudoku(q)
-    print(q)
+    print("Question board : ")
+    printBoard(q)
+    print("Solution board : ")
+    printBoard(a)
+    
+    solveSudoku( q , verbose= True)
+    # solveSudoku( q )
+    
     if q == a:
-        print("Solved")
+        print("[+] Solved\n")
     else :
-        print("Not Solved")
+        print("[-] Not Solved\n")
 
+    print("Final board : ")
+    printBoard(q)
