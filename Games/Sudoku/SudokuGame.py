@@ -87,8 +87,7 @@ class Firework:
         self.g = vec(0, G)
         self.screen = screen
         self.colour = random.choice(COLOURS)
-        self.seed = Particle(self.screen, vec(
-            pos), vec(0, vel), SEED_SIZE, self.colour)
+        self.seed = Particle(self.screen, vec(pos), vec(0, vel), SEED_SIZE, self.colour)
         self.particles = []
         self.exploded = False
         self.explode_time = 0
@@ -376,6 +375,13 @@ class game:
         self.draw_input_reader()
         self.selected_square = None
 
+    def set_board_from_Outside(self, newBoard):
+        self.board = newBoard
+        self.refresh_draw_Screen()
+    
+    def get_board_from_Outside(self ):
+        return self.board
+    
     def run(self):
         running = True
         while running:
