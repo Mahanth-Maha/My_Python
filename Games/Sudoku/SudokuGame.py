@@ -6,8 +6,9 @@ import os
 import random
 import pandas as pd
 
-
+print('loading please wait...',end= '')
 df = pd.read_csv('sudoku_500000_for_github.csv')
+print('Loaded !')
 pygame.init()
 
 G = 0.25
